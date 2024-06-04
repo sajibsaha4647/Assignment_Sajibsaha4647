@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import '../../utils/utils.dart';
 import '../exception_handle.dart';
 import 'base_api_service.dart';
@@ -14,10 +15,8 @@ class NetworkService extends BaseApiServices {
       final response = await http.get(
         Uri.parse(url),
         headers: {
-          // 'Content-type': 'application/json',
           'Accept': 'application/json',
           "Authorization": "Bearer $token",
-          "s-token": "$token"
         },
       ).timeout(const Duration(seconds: 60));
 
@@ -39,13 +38,11 @@ class NetworkService extends BaseApiServices {
 
     dynamic responseJson;
     try {
-      Response response = await http
-          .post(Uri.parse(url),
+      Response response = await http.post(Uri.parse(url),
           headers: {
             // 'Content-type': 'application/json',
             'Accept': 'application/json',
             "Authorization": "Bearer $token",
-            "s-token": "$token"
           },
           body: data)
           .timeout(const Duration(seconds: 10));
@@ -72,7 +69,6 @@ class NetworkService extends BaseApiServices {
         print(responseJson);
         return responseJson;
       case 400:
-      ;
         throw BadRequestExceptoin("${response.body}");
       case 401:
         dynamic responseJson = jsonDecode(response.body);
@@ -80,8 +76,6 @@ class NetworkService extends BaseApiServices {
 
         throw BadRequestExceptoin("${response.body}");
       case 415:
-
-
         throw BadRequestExceptoin("${response.body}");
       case 500:
         throw UnauthorisedExceptoin("${response.body}");

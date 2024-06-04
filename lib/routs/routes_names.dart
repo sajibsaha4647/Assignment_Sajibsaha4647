@@ -1,6 +1,9 @@
 class RoutesName {
 
 
+  //splash screen
+  static const splash_screen = "splash_screen";
+
   //auth screens
   static const login_screen = "login_screen";
   static const signup_screen = "signup_screen";

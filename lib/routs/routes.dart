@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment_sajib/view/splash_screen.dart';
 import '../view/cart_screen.dart';
 import '../view/category_screen.dart';
 import '../view/home_screen.dart';
@@ -15,7 +16,9 @@ class Routes{
   static Route<dynamic>generateRoute(RouteSettings settings){
 
     switch (settings.name) {
-
+      case RoutesName.splash_screen:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const SplashScreen());
       case RoutesName.login_screen:
         return MaterialPageRoute(
             builder: (BuildContext context) => const SignInScreen());
