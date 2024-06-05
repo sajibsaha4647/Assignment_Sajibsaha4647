@@ -14,6 +14,7 @@ class InputFormWidget extends StatelessWidget {
         this.editController,
         this.prefixImage,
         this.suffixImage,
+        required this.obscureText,
         this.keyboardType});
 
   double? widths;
@@ -21,6 +22,7 @@ class InputFormWidget extends StatelessWidget {
   String? prefixImage;
   String? suffixImage;
   bool? leftIcon = false;
+  bool obscureText = false;
   bool? enabled = true;
   TextInputType? keyboardType;
   void Function(String?)? onSaved;
@@ -32,6 +34,7 @@ class InputFormWidget extends StatelessWidget {
     return Container(
         padding: EdgeInsets.symmetric(horizontal:5.w),
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(10.r)),
             boxShadow: [
                BoxShadow(
                 color: AppColors.shadowColor,
@@ -60,8 +63,8 @@ class InputFormWidget extends StatelessWidget {
                 keyboardType: keyboardType,
                 controller: editController,
                 enabled: enabled,
+                obscureText:obscureText ,
                 decoration: InputDecoration(
-                  
                   hintText: hintText,
                   hintStyle: context.textTheme.titleMedium?.copyWith(
                     color: AppColors.placeholderColor
