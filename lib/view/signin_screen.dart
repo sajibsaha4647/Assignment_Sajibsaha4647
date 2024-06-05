@@ -22,7 +22,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.pageBackground,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_sajib/constants/app_colors.dart';
 import 'package:flutter_assignment_sajib/constants/assets.dart';
+import 'package:flutter_assignment_sajib/routs/routes_names.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -18,12 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.pageBackground,
 
       appBar: AppBar(
 
         automaticallyImplyLeading: false,
-        backgroundColor: AppColors.white,
+        backgroundColor: AppColors.pageBackground,
         title: Text("Product List",style: context.textTheme.titleLarge?.copyWith(
           color: AppColors.black,
           fontSize: 22.sp,
@@ -98,7 +99,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-
             ],
           )),
             SizedBox(
@@ -114,92 +114,97 @@ class _HomeScreenState extends State<HomeScreen> {
                     childAspectRatio: (150.0 / 250.0)
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  return  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10.r)),
-                        boxShadow: [
-                          BoxShadow(
-                            color:AppColors.shadowColor.withOpacity(0.3),
-                            spreadRadius: 0.0,
-                            blurRadius: 5.0,
-                            offset: Offset(0.0,10.0),
+                  return  InkWell(
+                    onTap: (){
+                      Get.toNamed(RoutesName.profile_screen);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                          boxShadow: [
+                            BoxShadow(
+                              color:AppColors.shadowColor.withOpacity(0.3),
+                              spreadRadius: 0.0,
+                              blurRadius: 5.0,
+                              offset: Offset(0.0,10.0),
+                            ),
+                          ],
+                          color: AppColors.white),
+                      child:Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                            ClipRRect(
+                                child: Image.asset(AppAssets.man1,width: Get.width,height: 150.h, fit: BoxFit.fitWidth,),
+                            borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),topLeft:Radius.circular(10.r) ),
+                            ),
+                          SizedBox(
+                            height: 10.h,
                           ),
-                        ],
-                        color: AppColors.white),
-                    child:Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                          ClipRRect(
-                              child: Image.asset(AppAssets.man1,width: Get.width,height: 150.h, fit: BoxFit.fitWidth,),
-                          borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),topLeft:Radius.circular(10.r) ),
-                          ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                       Padding(
-                         padding: EdgeInsets.symmetric(horizontal: 19.w),
-                         child: Column(
-                           mainAxisAlignment: MainAxisAlignment.start,
-                           crossAxisAlignment: CrossAxisAlignment.start,
-                           children: [
-                             Text("Girls Stylish Dresses…",maxLines: 2,style: context.textTheme.titleMedium?.copyWith(
-                                 fontWeight: FontWeight.normal,
-                                 fontSize: 14.sp
-                             ),),
-                             SizedBox(
-                               height: 10.h,
-                             ),
-                             Row(
-                               children: [
-                                 Container(
-                                   child: Text("\$150",style: context.textTheme.titleMedium?.copyWith(
-                                     color: AppColors.shadowColor,
-                                     fontSize: 15.sp,
-                                     decoration: TextDecoration.lineThrough,
-                                   ),),
-                                 ),
-                                 SizedBox(
-                                   width: 6.h,
-                                 ),
-                                 Container(
-                                   child: Text("\$79.00",style: context.textTheme.titleMedium?.copyWith(
-                                       color: AppColors.black,
-                                       fontSize: 18.sp,
-                                       decoration: TextDecoration.lineThrough,
-                                       fontWeight: FontWeight.bold
-                                   ),),
-                                 )
-                               ],
-                             ),
-                             SizedBox(
-                               height: 10.h,
-                             ),
-                             RatingBar.builder(
-                               initialRating: 4,
-                               minRating: 1,
-                               direction: Axis.horizontal,
-                               allowHalfRating: true,
-                               itemCount: 5,
-                               itemSize: 15.0,
-                               itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
-                               itemBuilder: (context, _) => Icon(
-                                 Icons.star,
-                                 color: Colors.amber,
-                                 size: 5,
-                                 opticalSize: 5,
-                                 weight: 10,
+                         Padding(
+                           padding: EdgeInsets.symmetric(horizontal: 19.w),
+                           child: Column(
+                             mainAxisAlignment: MainAxisAlignment.start,
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               Text("Girls Stylish Dresses…",maxLines: 2,style: context.textTheme.titleMedium?.copyWith(
+                                   fontWeight: FontWeight.normal,
+                                   fontSize: 14.sp
+                               ),),
+                               SizedBox(
+                                 height: 10.h,
                                ),
-                               onRatingUpdate: (rating) {
-                                 print(rating);
-                               },
-                             )
-                           ],
+                               Row(
+                                 children: [
+                                   Container(
+                                     child: Text("\$150",style: context.textTheme.titleMedium?.copyWith(
+                                       color: AppColors.shadowColor,
+                                       fontSize: 15.sp,
+                                       decoration: TextDecoration.lineThrough,
+                                     ),),
+                                   ),
+                                   SizedBox(
+                                     width: 6.h,
+                                   ),
+                                   Container(
+                                     child: Text("\$79.00",style: context.textTheme.titleMedium?.copyWith(
+                                         color: AppColors.black,
+                                         fontSize: 18.sp,
+                                         decoration: TextDecoration.lineThrough,
+                                         fontWeight: FontWeight.bold
+                                     ),),
+                                   )
+                                 ],
+                               ),
+                               SizedBox(
+                                 height: 10.h,
+                               ),
+                               RatingBar.builder(
+                                 initialRating: 4,
+                                 minRating: 1,
+                                 direction: Axis.horizontal,
+                                 allowHalfRating: true,
+                                 itemCount: 5,
+                                 itemSize: 15.0,
+                                 itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
+                                 itemBuilder: (context, _) => Icon(
+                                   Icons.star,
+                                   color: Colors.amber,
+                                   size: 5,
+                                   opticalSize: 5,
+                                   weight: 10,
+                                 ),
+                                 onRatingUpdate: (rating) {
+                                   print(rating);
+                                 },
+                               )
+                             ],
+                           ),
                          ),
-                       ),
 
-                      ],
-                    )
+                        ],
+                      )
+                    ),
                   );
                 },
               ),

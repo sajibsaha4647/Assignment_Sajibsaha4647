@@ -4,6 +4,7 @@ class AppAssets {
   static const String appLogo = "assets/logo.png";
   static const String arrow_down = "assets/arrow_down.png";
   static const String arrow_shpe_down = "assets/arrow_shpe_down.png";
+  static const String arrow_right = "assets/arrow_right.png";
   static const String bell = "assets/bell.png";
   static const String bottom_nav_background = "assets/bottom_nav_background.png";
   static const String bottomsheettopbar = "assets/bottomsheettopbar.png";
