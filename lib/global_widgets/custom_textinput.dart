@@ -41,8 +41,8 @@ class InputFormWidget extends StatelessWidget {
               ),
                BoxShadow(
                 color:AppColors.shadowColor.withOpacity(0.3),
-                spreadRadius: 1.0,
-                blurRadius: 30.0,
+                spreadRadius: 0.0,
+                blurRadius: 50.0,
                  offset: Offset(0.0,10.0),
               ),
             ],

@@ -90,7 +90,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   height: 60.h,
                   loading: false,
                   onPressed: () {
-
+                      Get.toNamed(RoutesName.home_screen);
                   },
                 ),
                 SizedBox(
