@@ -5,6 +5,7 @@ class AppColors {
   static Color secondaryColor = const Color(0xffFF7B51);
   static Color white = const Color(0xffffffff);
   static Color black = const Color(0xff000000);
+  static Color bottomSheetShadow = const Color(0xff979797);
   static Color blackish = const Color(0xff383C40);
   static Color fontColor = const Color(0xff535353);
   static Color shadowColor = const Color(0xff979797);

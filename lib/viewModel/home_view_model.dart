@@ -32,3 +32,4 @@ class HomeViewModel extends GetxController{
   }
 
 }
+

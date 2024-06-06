@@ -18,10 +18,10 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.pageBackground,
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.pageBackground,
+        body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15.w),
             child: Column(
@@ -43,7 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ],
                   ),
                 ),
-
+        
                 SizedBox(
                   height: 40.h,
                 ),
@@ -98,7 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 60.h,
                   loading: false,
                   onPressed: () {
-
+        
                   },
                 ),
                 SizedBox(

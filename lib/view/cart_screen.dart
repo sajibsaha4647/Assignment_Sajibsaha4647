@@ -17,7 +17,6 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.pageBackground,
-
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: AppColors.pageBackground,

@@ -32,6 +32,8 @@ class CustomButton extends StatelessWidget {
       onPressed: loading == true ? () {} : onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: color ?? Get.theme.primaryColor,
+        // shadowColor: Colors.transparent,
+        // primary: Colors.transparent,
         minimumSize: Size(width ?? Get.width, height ?? 42),
         padding: const EdgeInsets.symmetric(horizontal: 2),
         textStyle: Get.theme.textTheme.bodyMedium!.copyWith(

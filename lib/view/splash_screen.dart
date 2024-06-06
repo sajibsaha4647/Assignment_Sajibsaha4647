@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_sajib/constants/assets.dart';
 import 'package:flutter_assignment_sajib/routs/routes_names.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 class SplashScreen extends StatefulWidget {
@@ -28,7 +26,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Scaffold(
         backgroundColor: Colors.black,
         body: SizedBox(
           height: MediaQuery.of(context).size.height,
@@ -42,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
         ),
-      )
+
     );
   }
 }
