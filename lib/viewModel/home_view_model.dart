@@ -13,6 +13,8 @@ import 'package:flutter_assignment_sajib/view/product_list_screen.dart';
 import 'package:flutter_assignment_sajib/view/profile_screen.dart';
 import 'package:get/get.dart';
 
+import '../model/response_model/filter_list_model.dart';
+
 class HomeViewModel extends GetxController{
 
  final _homeRepo = HomeRepository() ;
@@ -57,12 +59,41 @@ class HomeViewModel extends GetxController{
       });
     }
 
+    //===================== filter list ===============
+
+  List<FilterList> filterListResponse = [];
+  bool filterListLoading = false;
+
+  Future<void> filterList() async {
+    filterListLoading = true;
+    update();
+    _homeRepo.filterList().then((value){
+      filterListResponse = value;
+        update();
+      filterListLoading = false;
+        update();
+            }).onError((error, stackTrace){
+      filterListLoading = false;
+        update();
+        print(error);
+      });
+    }
+
+    void getFilteredCheckPress(int index){
+        if(filterListResponse.length != 0){
+          filterListResponse[index] = filterListResponse[index].copyWith(
+            ischecked: filterListResponse[index].ischecked == true ? false : true
+          );
+        }
+        update();
+    }
 
     void sorByNameProductList(){
-
       productListResponse.shuffle();
-
+      update();
     }
+
+
 
 
 }

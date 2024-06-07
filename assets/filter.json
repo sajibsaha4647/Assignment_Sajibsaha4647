@@ -1,0 +1,22 @@
+[
+  {
+    "name":"Newest",
+    "ischecked":false
+  },
+  {
+    "name":"Oldest",
+    "ischecked":false
+  },
+  {
+    "name":"Price low > High",
+    "ischecked":false
+  },
+  {
+    "name":"Price high > Low",
+    "ischecked":false
+  },
+  {
+    "name":"Best selling",
+    "ischecked":false
+  }
+]

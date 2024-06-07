@@ -2,6 +2,7 @@
 class AppAssets {
 
   static const String productJson = "assets/response.json";
+  static const String filterJson = "assets/filter.json";
   static const String appLogo = "assets/logo.png";
   static const String arrow_down = "assets/arrow_down.png";
   static const String arrow_shpe_down = "assets/arrow_shpe_down.png";

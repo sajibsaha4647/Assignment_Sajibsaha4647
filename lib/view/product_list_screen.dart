@@ -26,6 +26,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
     Future.delayed(Duration.zero, ()async {
       await Get.find<HomeViewModel>().productList() ;
     });
+    Future.delayed(Duration.zero, ()async {
+      await Get.find<HomeViewModel>().filterList() ;
+    });
     super.initState();
   }
 
@@ -103,14 +106,23 @@ class _ProductListScreenState extends State<ProductListScreen> {
                           Container(
                             child: Row(
                               children: [
-                                Text("Sort By",style: context.textTheme.titleMedium?.copyWith(
-                                    fontSize: 16.sp,
-                                    color: AppColors.shadowColor
-                                ),),
-                                SizedBox(
-                                  width: 6.w,
-                                ),
-                                Image.asset(AppAssets.arrow_down,height: 16.h,width: 15.w,),
+                               InkWell(
+                                 onTap: (){
+                                   homeCon.sorByNameProductList();
+                                 },
+                                 child: Row(
+                                   children: [
+                                     Text("Sort By",style: context.textTheme.titleMedium?.copyWith(
+                                         fontSize: 16.sp,
+                                         color: AppColors.shadowColor
+                                     ),),
+                                     SizedBox(
+                                       width: 6.w,
+                                     ),
+                                     Image.asset(AppAssets.arrow_down,height: 16.h,width: 15.w,),
+                                   ],
+                                 ),
+                               ),
                                 SizedBox(
                                   width: 16.w,
                                 ),

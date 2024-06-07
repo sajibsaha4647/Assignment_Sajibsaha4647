@@ -9,6 +9,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../model/response_model/filter_list_model.dart';
+
 class Utils {
 
   static Toasts(String msg) {
@@ -92,21 +94,37 @@ class Utils {
                           SizedBox(
                             height: 18.h,
                           ),
-                          Row(
-                            children: [
-                              Image.asset(AppAssets.unchecked,height: 24.h,width: 24.w,),
-                              SizedBox(
-                                width: 12.h,
-                              ),
-                              Text("Newest",style: context.textTheme.titleSmall?.copyWith(
-                                  fontWeight: FontWeight.normal,
-                                  color: AppColors.black,
-                                  fontSize: 15.sp
-                              ),)
-                      
-                            ],
-                          ),
+                          homeCon.filterListLoading == true ?
+                              CircularProgressIndicator():
+                          Expanded(
+                            child: ListView.builder(
+                                itemCount: homeCon.filterListResponse.length,
+                                itemBuilder: (context,index){
+                                  FilterList model = homeCon.filterListResponse.elementAt(index);
+                                  return Container(
+                                    margin: EdgeInsets.only(bottom: 12.h),
+                                    child: InkWell(
+                                      onTap: (){
+                                      homeCon.getFilteredCheckPress(index);
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Image.asset(model.ischecked == true ? AppAssets.checked :  AppAssets.unchecked,height: 24.h,width: 24.w,),
+                                          SizedBox(
+                                            width: 12.h,
+                                          ),
+                                          Text("${model.name}",style: context.textTheme.titleSmall?.copyWith(
+                                              fontWeight: FontWeight.normal,
+                                              color: AppColors.black,
+                                              fontSize: 15.sp
+                                          ),)
 
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                }),
+                          )
                         ],
                       ),
                     ),
