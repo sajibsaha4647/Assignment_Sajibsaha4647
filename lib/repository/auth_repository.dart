@@ -19,7 +19,7 @@ class AuthRepository {
     print(password);
     print("password here");
     try{
-      dynamic response = await baseApiService.postPostApiResponse("https://apptest.dokandemo.com/wp-json/jwt-auth/v1/token?username=${username}&password=${password}","","");
+      dynamic response = await baseApiService.postPostApiResponse("${AppUrl.endpointLogin}token?username=${username}&password=${password}","","");
       return LoginResponse.fromMap(response);
     }catch(e){
       throw e ;
