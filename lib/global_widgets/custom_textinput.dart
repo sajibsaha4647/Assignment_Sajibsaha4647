@@ -15,6 +15,7 @@ class InputFormWidget extends StatelessWidget {
         this.prefixImage,
         this.suffixImage,
         required this.obscureText,
+        this.suffixPress,
         this.keyboardType});
 
   double? widths;
@@ -23,6 +24,7 @@ class InputFormWidget extends StatelessWidget {
   String? suffixImage;
   bool? leftIcon = false;
   bool obscureText = false;
+   void Function()? suffixPress;
   bool? enabled = true;
   TextInputType? keyboardType;
   void Function(String?)? onSaved;
@@ -48,7 +50,7 @@ class InputFormWidget extends StatelessWidget {
             ],
             color: AppColors.white),
         width: widths ?? Get.width,
-        height: 50.h,
+        height: 60.h,
         child: Row(
           children: [
             leftIcon == true
@@ -60,6 +62,7 @@ class InputFormWidget extends StatelessWidget {
                 : Container(),
             Flexible(
               child: TextFormField(
+                textAlignVertical: TextAlignVertical.center,
                 keyboardType: keyboardType,
                 controller: editController,
                 enabled: enabled,
@@ -72,10 +75,12 @@ class InputFormWidget extends StatelessWidget {
                   border: InputBorder.none,
                   suffixIcon:suffixImage != null ?   Padding(
                       padding: EdgeInsets.all(12.r),
-                      child: Image.asset(suffixImage.toString(),)) :Text(""),
+                      child: InkWell(
+                          onTap: suffixPress,
+                          child: Image.asset(suffixImage.toString(),height: 17.h,width: 22.w,))) :Text(""),
                   prefixIcon:prefixImage != null ?   Padding(
                       padding: EdgeInsets.all(12.r),
-                      child: Image.asset(prefixImage.toString(),)) : Text(""),
+                      child: Image.asset(prefixImage.toString(),height: 17.h,width: 22.w,)) : Text(""),
                 ),
                 onSaved: onSaved,
               ),

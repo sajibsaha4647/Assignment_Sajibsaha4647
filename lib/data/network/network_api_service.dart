@@ -26,8 +26,6 @@ class NetworkService extends BaseApiServices {
       Utils.Toasts("No internet connection");
       throw FetchDataException("No internet connection");
     }
-    // print("responseJson");
-    // print(responseJson);
     return responseJson;
   }
 
@@ -39,8 +37,8 @@ class NetworkService extends BaseApiServices {
       Response response = await http.post(Uri.parse(url),
           headers: {
             // 'Content-type': 'application/json',
-            'Accept': 'application/json',
-            "Authorization": "Bearer $token",
+            // 'Accept': 'application/json',
+            // "Authorization": "Bearer $token",
           },
           body: data)
           .timeout(const Duration(seconds: 60));
@@ -51,7 +49,6 @@ class NetworkService extends BaseApiServices {
       Utils.Toasts("No internet connection");
       throw FetchDataException("No internet connection");
     }
-
     return responseJson;
   }
 
@@ -60,13 +57,13 @@ class NetworkService extends BaseApiServices {
   Future postPostApiResponseRaw(String url, data, token) async {
     dynamic responseJson;
     try {
-      Response response = await http.post(Uri.parse(url),
+
+      var response = await http.post(Uri.parse(url),
           headers: {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            "Authorization": "Bearer $token",
           },
-          body: data)
+          body:jsonEncode(data))
           .timeout(const Duration(seconds: 60));
 
       responseJson = returnResponse(response);
@@ -83,20 +80,16 @@ class NetworkService extends BaseApiServices {
   dynamic returnResponse( http.Response response) {
     print("${response.statusCode}"+"called");
 
-
     switch (response.statusCode) {
-
       case 200:
         dynamic responseJson = jsonDecode(response.body);
-        print("responseJson in network file");
-        print(responseJson);
         return responseJson;
       case 400:
+        dynamic responseJson = jsonDecode(response.body);
+        Utils.Toasts("${responseJson["message"]}");
         throw BadRequestExceptoin("${response.body}");
       case 401:
         dynamic responseJson = jsonDecode(response.body);
-        print(responseJson);
-
         throw BadRequestExceptoin("${response.body}");
       case 415:
         throw BadRequestExceptoin("${response.body}");

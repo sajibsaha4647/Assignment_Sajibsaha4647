@@ -36,7 +36,7 @@ class Utils {
           ),
           message: message,
           title: "Dokan",
-          flushbarPosition: FlushbarPosition.BOTTOM,
+          flushbarPosition: FlushbarPosition.TOP,
           backgroundColor: Colors.pinkAccent,
           duration: const Duration(seconds: 3),
         )..show(context));

@@ -4,6 +4,7 @@ import '../model/request_model/register_request_model.dart';
 import '../model/response_model/login_response_model.dart';
 import '../model/response_model/register_response_model.dart';
 import '../repository/auth_repository.dart';
+import '../routs/routes_names.dart';
 import '../utils/utils.dart';
 import 'package:email_validator/email_validator.dart';
 
@@ -12,9 +13,17 @@ class AuthViewModel extends GetxController {
   final _authrepo = AuthRepository();
 
 
-  //============================ user login =======================
 
-  final emailEditController = TextEditingController();
+
+  //============================ user login =======================
+  var obsecure = true ;
+
+  void setObsecure(){
+    obsecure = !obsecure ;
+    update();
+  }
+
+  final userNameEditController = TextEditingController();
   final passwordEditController = TextEditingController();
 
   bool loginLoading = false ;
@@ -23,26 +32,50 @@ class AuthViewModel extends GetxController {
 
   Future<void> userLogin(context) async {
     // final bool isValid = EmailValidator.validate(emailEditController.text);
-    if (emailEditController.text.isEmpty ||passwordEditController.text.isEmpty) {
+    if (userNameEditController.text.isEmpty ||passwordEditController.text.isEmpty) {
       Utils.flashbarMethod("All field are required !", context);
     } else {
       loginLoading = true;
       update();
-      var response = await _authrepo.userLogin(emailEditController.text,passwordEditController.text);
-        if(response != null){
-          loginResponse = response ;
+       _authrepo.userLogin(userNameEditController.text,passwordEditController.text).then((value){
+        if(value != null){
+          loginResponse = value ;
           update();
           loginLoading = false;
           update();
+          Get.toNamed(RoutesName.home_screen);
+          Utils.Toasts("You have successfully login !");
         }else{
           loginLoading = false;
           update();
+          Utils.Toasts("Login failed !");
         }
+
+      }).onError((error, stackTrace){
+        loginLoading = false;
+        update();
+        print(error);
+      });
+
     }
   }
 
 
 //============================ user register =======================
+
+  var obsecurePass = true ;
+
+  void setObsecurePass(){
+    obsecurePass = !obsecurePass ;
+    update();
+  }
+
+  var obsecureConPass = true ;
+
+  void setObsecureConPass(){
+    obsecureConPass = !obsecureConPass ;
+    update();
+  }
 
   final nameEditController = TextEditingController();
   final rEmailEditController = TextEditingController();
@@ -70,16 +103,26 @@ class AuthViewModel extends GetxController {
         email: rEmailEditController.text.toString(),
         password: rPasswordEditController.text.toString()
       );
-      var response = await _authrepo.userRegister(model);
-      if(response != null){
-        registerResponse = response ;
-        update();
+      _authrepo.userRegister(model).then((value){
+        if(value != null){
+          registerResponse = value ;
+          update();
+          registerLoading = false;
+          update();
+          Get.toNamed(RoutesName.login_screen);
+          Utils.Toasts("Registration sucessfully completed !");
+        }else{
+          registerLoading = false;
+          update();
+        }
+      }).onError((error, stackTrace){
         registerLoading = false;
         update();
-      }else{
-        registerLoading = false;
-        update();
-      }
+        print(error);
+      });
+
+
+
     }
   }
 
