@@ -173,7 +173,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                       width: Get.width,height: 150.h, fit: BoxFit.fitWidth,
                                       imageUrl: model.images![0].src.toString(),
                                       errorWidget: (context, url, error) {
-                                        return Image.asset(AppAssets.man1, width: Get.width,height: 150.h, fit: BoxFit.fitWidth,);
+                                        return Image.asset(AppAssets.defaultImage, width: Get.width,height: 150.h, fit: BoxFit.fitWidth,);
                                       },
                                     ),
                                     borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),topLeft:Radius.circular(10.r) ),

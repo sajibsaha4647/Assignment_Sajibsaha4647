@@ -33,4 +33,5 @@ class AppAssets {
   static const String unchecked = "assets/unchecked.png";
   static const String user = "assets/user.png";
   static const String user_avater = "assets/user_avater.png";
+  static const String defaultImage = "assets/defoliate_image.jpg";
 }
