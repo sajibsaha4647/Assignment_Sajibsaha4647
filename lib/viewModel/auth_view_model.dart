@@ -43,7 +43,7 @@ class AuthViewModel extends GetxController {
           update();
           loginLoading = false;
           update();
-          Get.toNamed(RoutesName.home_screen);
+          Get.offAllNamed(RoutesName.home_screen);
           Utils.Toasts("You have successfully login !");
         }else{
           loginLoading = false;
