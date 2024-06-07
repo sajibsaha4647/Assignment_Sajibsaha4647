@@ -1,14 +1,14 @@
 // To parse this JSON data, do
 //
-//     final productList = productListFromMap(jsonString);
+//     final productListResponse = productListResponseFromMap(jsonString);
 
 import 'dart:convert';
 
-List<ProductList> productListFromMap(String str) => List<ProductList>.from(json.decode(str).map((x) => ProductList.fromMap(x)));
+List<ProductListResponse> productListResponseFromMap(str) => List<ProductListResponse>.from(json.decode(str).map((x) => ProductListResponse.fromMap(x)));
 
-String productListToMap(List<ProductList> data) => json.encode(List<dynamic>.from(data.map((x) => x.toMap())));
+String productListResponseToMap(List<ProductListResponse> data) => json.encode(List<dynamic>.from(data.map((x) => x.toMap())));
 
-class ProductList {
+class ProductListResponse {
   int? id;
   String? name;
   String? slug;
@@ -69,7 +69,7 @@ class ProductList {
   String? purchaseNote;
   List<Category>? categories;
   List<Category>? tags;
-  List<Image>? images;
+  List<ImageData>? images;
   List<Attribute>? attributes;
   List<dynamic>? defaultAttributes;
   List<int>? variations;
@@ -79,7 +79,7 @@ class ProductList {
   Store? store;
   Links? links;
 
-  ProductList({
+  ProductListResponse({
     this.id,
     this.name,
     this.slug,
@@ -151,7 +151,7 @@ class ProductList {
     this.links,
   });
 
-  factory ProductList.fromMap(Map<String, dynamic> json) => ProductList(
+  factory ProductListResponse.fromMap(Map<String, dynamic> json) => ProductListResponse(
     id: json["id"],
     name: json["name"],
     slug: json["slug"],
@@ -212,7 +212,7 @@ class ProductList {
     purchaseNote: json["purchase_note"],
     categories: json["categories"] == null ? [] : List<Category>.from(json["categories"]!.map((x) => Category.fromMap(x))),
     tags: json["tags"] == null ? [] : List<Category>.from(json["tags"]!.map((x) => Category.fromMap(x))),
-    images: json["images"] == null ? [] : List<Image>.from(json["images"]!.map((x) => Image.fromMap(x))),
+    images: json["images"] == null ? [] : List<ImageData>.from(json["images"]!.map((x) => ImageData.fromMap(x))),
     attributes: json["attributes"] == null ? [] : List<Attribute>.from(json["attributes"]!.map((x) => Attribute.fromMap(x))),
     defaultAttributes: json["default_attributes"] == null ? [] : List<dynamic>.from(json["default_attributes"]!.map((x) => x)),
     variations: json["variations"] == null ? [] : List<int>.from(json["variations"]!.map((x) => x)),
@@ -408,7 +408,7 @@ class Download {
   };
 }
 
-class Image {
+class ImageData {
   int? id;
   DateTime? dateCreated;
   DateTime? dateCreatedGmt;
@@ -419,7 +419,7 @@ class Image {
   String? alt;
   int? position;
 
-  Image({
+  ImageData({
     this.id,
     this.dateCreated,
     this.dateCreatedGmt,
@@ -431,7 +431,7 @@ class Image {
     this.position,
   });
 
-  factory Image.fromMap(Map<String, dynamic> json) => Image(
+  factory ImageData.fromMap(Map<String, dynamic> json) => ImageData(
     id: json["id"],
     dateCreated: json["date_created"] == null ? null : DateTime.parse(json["date_created"]),
     dateCreatedGmt: json["date_created_gmt"] == null ? null : DateTime.parse(json["date_created_gmt"]),

@@ -45,8 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
           bottomNavigationBar: AnimatedBottomNavigationBar.builder(
             itemCount: homeViewModel.iconList.length,
             tabBuilder: (int index, bool isActive) {
-              print(isActive);
-              print("isActive");
               final color = isActive ? AppColors.primaryColor : AppColors.placeholderColor;
               return Column(
                 mainAxisSize: MainAxisSize.min,
@@ -55,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Image.asset(
                       homeViewModel.iconList[index],
                       width: 24,
-                    color:color,
+                    // color:AppColors.placeholderColor,
                     colorBlendMode: BlendMode.modulate,
                     ),
                   const SizedBox(height: 4),
