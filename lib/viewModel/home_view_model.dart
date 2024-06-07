@@ -1,5 +1,6 @@
 
 
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
@@ -88,9 +89,32 @@ class HomeViewModel extends GetxController{
         update();
     }
 
+      bool sortBy = false;
+
+      void setSortBy(){
+        sortBy = !sortBy;
+        update();
+      }
+
     void sorByNameProductList(){
-      productListResponse.shuffle();
+      setSortBy();
+      if(sortBy == false){
+        productListResponse..sort((a, b) => a.name!.compareTo(b.name!));
+        update();
+      }else if(sortBy == true){
+        productListResponse..sort((a, b) => b.name!.compareTo(a.name!));
+        update();
+
+      }
       update();
+
+    }
+
+
+    void filterProductList(){
+      sorByNameProductList();
+      update();
+      Get.back();
     }
 
 

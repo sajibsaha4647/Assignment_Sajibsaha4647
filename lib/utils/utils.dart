@@ -106,6 +106,7 @@ class Utils {
                                     child: InkWell(
                                       onTap: (){
                                       homeCon.getFilteredCheckPress(index);
+
                                       },
                                       child: Row(
                                         children: [
@@ -134,30 +135,40 @@ class Utils {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(child: Container(
-                            alignment: Alignment.center,
-                            height: 50.h,
-                            decoration: BoxDecoration(
-                                border: Border.all(width: 1,color: AppColors.shadowColor),
-                                borderRadius: BorderRadius.all(Radius.circular(10.r))
+                          Expanded(child: InkWell(
+                            onTap: (){
+                              Get.back();
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 50.h,
+                              decoration: BoxDecoration(
+                                  border: Border.all(width: 1,color: AppColors.shadowColor),
+                                  borderRadius: BorderRadius.all(Radius.circular(10.r))
+                              ),
+                              child: Text("Cancel",style: Get.theme.textTheme.bodyMedium!.copyWith(
+                                  fontWeight: FontWeight.bold, fontSize: 17.sp),),
                             ),
-                            child: Text("Cancel",style: Get.theme.textTheme.bodyMedium!.copyWith(
-                                fontWeight: FontWeight.bold, fontSize: 17.sp),),
                           ),),
                           SizedBox(
                             width: 24.w,
                           ),
-                          Expanded(child: Container(
-                            alignment: Alignment.center,
-                            height: 50.h,
-                            decoration: BoxDecoration(
-                                color: AppColors.buttonGreen,
-                                borderRadius: BorderRadius.all(Radius.circular(10.r))
+                          Expanded(child: InkWell(
+                            onTap: (){
+                              homeCon.filterProductList();
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 50.h,
+                              decoration: BoxDecoration(
+                                  color: AppColors.buttonGreen,
+                                  borderRadius: BorderRadius.all(Radius.circular(10.r))
+                              ),
+                              child: Text("Save",style: Get.theme.textTheme.bodyMedium!.copyWith(
+                                  fontWeight: FontWeight.bold, fontSize: 17.sp,
+                                  color: AppColors.white
+                              ),),
                             ),
-                            child: Text("Save",style: Get.theme.textTheme.bodyMedium!.copyWith(
-                                fontWeight: FontWeight.bold, fontSize: 17.sp,
-                                color: AppColors.white
-                            ),),
                           ),)
                         ],
                       ),
