@@ -51,10 +51,10 @@ class _SignInScreenState extends State<SignInScreen> {
                       height: 40.h,
                     ),
                     InputFormWidget(
-                      prefixImage: AppAssets.user,
+                      prefixImage: AppAssets.messagebox,
                       keyboardType: TextInputType.text,
                       editController: authCon.userNameEditController,
-                      hintText: "User Name",
+                      hintText: "Email",
                         obscureText:false
                     ),
                     SizedBox(

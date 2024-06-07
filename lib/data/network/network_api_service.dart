@@ -97,6 +97,10 @@ class NetworkService extends BaseApiServices {
         throw UnauthorisedExceptoin("${response.body}");
       case 404:
         throw UnauthorisedExceptoin("${response.body}");
+      case 403:
+        dynamic responseJson = jsonDecode(response.body);
+        Utils.Toasts("Unauthorized ! wrong information ");
+        throw UnauthorisedExceptoin("${response.body}");
       default:
         throw FetchDataException(
             "Communication problem with server ${response.statusCode}");
