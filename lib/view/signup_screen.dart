@@ -76,7 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                         prefixImage: AppAssets.lock,
                         suffixImage: AppAssets.eyeslash,
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         editController: authCon.rPasswordEditController,
                         hintText: "Password",
                         obscureText:authCon.obsecurePass
@@ -90,7 +90,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       },
                         prefixImage: AppAssets.lock,
                         suffixImage: AppAssets.eyeslash,
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         editController: authCon.rConfirmPasswordPasswordEditController,
                         hintText: "Confirm Password",
                         obscureText:authCon.obsecureConPass
