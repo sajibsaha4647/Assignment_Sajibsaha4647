@@ -61,7 +61,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     prefixImage: AppAssets.messagebox,
                     keyboardType: TextInputType.text,
                     // editController: appController.ageEditController,
-                    hintText: "Name",
+                    hintText: "Email",
                     obscureText:false
                 ),
                 SizedBox(

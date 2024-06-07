@@ -9,21 +9,21 @@ import 'base_api_service.dart';
 class NetworkService extends BaseApiServices {
   //here get response
   @override
-  Future getGetApiResponse(context, String url, token) async {
+  Future getGetApiResponse(String url) async {
     dynamic responseJson;
     try {
       final response = await http.get(
         Uri.parse(url),
         headers: {
           'Accept': 'application/json',
-          "Authorization": "Bearer $token",
+          // "Authorization": "Bearer $token",
         },
       ).timeout(const Duration(seconds: 60));
 
-      responseJson = returnResponse(context, response);
+      responseJson = returnResponse( response);
 
     } on SocketException {
-      Utils.flashbarMethod("No internet connection", context);
+      Utils.Toasts("No internet connection");
       throw FetchDataException("No internet connection");
     }
     // print("responseJson");
@@ -33,9 +33,7 @@ class NetworkService extends BaseApiServices {
 
   //here post response
   @override
-  Future postPostApiResponse(context, String url, data, token) async {
-  
-
+  Future postPostApiResponse(String url, data, token) async {
     dynamic responseJson;
     try {
       Response response = await http.post(Uri.parse(url),
@@ -45,12 +43,36 @@ class NetworkService extends BaseApiServices {
             "Authorization": "Bearer $token",
           },
           body: data)
-          .timeout(const Duration(seconds: 10));
+          .timeout(const Duration(seconds: 60));
 
-      responseJson = returnResponse(context, response);
+      responseJson = returnResponse(response);
     } on SocketException {
      
-      Utils.flashbarMethod("No internet connection", context);
+      Utils.Toasts("No internet connection");
+      throw FetchDataException("No internet connection");
+    }
+
+    return responseJson;
+  }
+
+  //here post response Raw
+  @override
+  Future postPostApiResponseRaw(String url, data, token) async {
+    dynamic responseJson;
+    try {
+      Response response = await http.post(Uri.parse(url),
+          headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            "Authorization": "Bearer $token",
+          },
+          body: data)
+          .timeout(const Duration(seconds: 60));
+
+      responseJson = returnResponse(response);
+    } on SocketException {
+
+      Utils.Toasts("No internet connection");
       throw FetchDataException("No internet connection");
     }
 
@@ -58,11 +80,12 @@ class NetworkService extends BaseApiServices {
   }
 
   //here return response
-  dynamic returnResponse(context, http.Response response) {
+  dynamic returnResponse( http.Response response) {
     print("${response.statusCode}"+"called");
 
 
     switch (response.statusCode) {
+
       case 200:
         dynamic responseJson = jsonDecode(response.body);
         print("responseJson in network file");
